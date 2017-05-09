@@ -1,0 +1,15 @@
+getwd()
+setwd("C:/Users/sleeba/OneDrive/RStudio/Introduction to R -- Udacity/lesson2/")
+df<-read.csv('reddit.csv')
+str(df)
+summary(df)
+library("ggplot2")
+some_unordered<-levels(df$age.range)
+qplot(data=df,x =df$age.range)
+df$age.range <- ordered(df$age.range, levels = c("Under 18","18-24","25-34","35-44","45-54","55-64","65 or Above"))
+# Other way to do it
+df$age.range<-factor(df$age.range,levels =c("Under 18","18-24","25-34","35-44","45-54","55-64","65 or Above"),ordered = T )
+qplot(data=df,x =df$age.range)
+table(df$age.range)
+
+qplot(data = df,x = income.range)
